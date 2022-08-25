@@ -27,7 +27,7 @@
             </div>
             <div class="container mode" onclick="selectVisibility(this)">
                 <ion-icon name="ios-lock"></ion-icon>
-                <h3>Privado</h3>
+                <h3>Reservadamente</h3>
                 <ion-icon class="checkmark hidden" name="checkmark"></ion-icon>
             </div>
         </navbar>
@@ -39,9 +39,12 @@
             </header>
             <div class="chat">
             </div>
-            <footer class="container footer">
-                <input id="message-type-box" type="text" placeholder="Escreva aqui...">
-                <img onclick="sendMessage()" eventsrc="images/Vector (2).svg">
+            <footer class="footer">
+                <div class="container">
+                    <input id="message-type-box" type="text" placeholder="Escreva aqui...">
+                    <img class="send-button" onclick="sendMessage()" src="images/Vector (2).svg">
+                </div>
+                <h3>Enviando para Todos (publico)</h2>
             </footer>
         </main>
     </section>

@@ -11,18 +11,19 @@ function loadPage() {
         
         for(let i = 0; i < messages.length; i++) {
             
-            let message;
+            let message = "";
             
             switch(messages[i].type) {
                 
                 case 'private_message':
-                    message =   `<h1 class="container message private">
-                                <span class="time">(${messages[i].time})</span>
-                                <span class="target">${messages[i].from}</span>
-                                <span>reservadamente para</span>
-                                <span class="target">${messages[i].to}:</span>
-                                ${messages[i].text}</h1>
-                                `
+                    if(messages[i].to === userName ||  messages[i].from === userName)
+                        message =   `<h1 class="container message private">
+                                    <span class="time">(${messages[i].time})</span>
+                                    <span class="target">${messages[i].from}</span>
+                                    <span>reservadamente para</span>
+                                    <span class="target">${messages[i].to}:</span>
+                                    ${messages[i].text}</h1>
+                                    `
                     break;
                 
                 case 'status':
@@ -65,6 +66,7 @@ function revealPage() {
     main_page.classList.remove('hidden');
 
 
+    window.scrollTo(0, document.body.scrollHeight);
     setInterval(stillOnline, 5000);
     setInterval(loadPage, 5000);
 
@@ -81,8 +83,9 @@ function sendMessage() {
         type: (visibility == "Publico" ? "message" : "private_message")
     }
     message_form.value = "";
+    
     const aux = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", msg);
-    aux.then(lul => {console.log(lul)});
+    aux.catch(function() {window.location.reload()});
 
 }
 
@@ -122,6 +125,8 @@ function selectParticipant(element) {
     contactName = element.querySelector('h3').innerHTML;
     console.log(contactName);
 
+    const feedback = document.querySelector('.footer h3');
+    feedback.innerHTML = `Enviando para ${contactName} (${visibility.toLowerCase()})`
 }
 
 function selectVisibility(element) {
@@ -137,6 +142,9 @@ function selectVisibility(element) {
     checkmark.classList.add('setted');
 
     visibility = element.querySelector('h3').innerHTML;
+
+    const feedback = document.querySelector('.footer h3');
+    feedback.innerHTML = `Enviando para ${contactName} (${visibility.toLowerCase()})`
 
 }
 
@@ -221,5 +229,6 @@ function addEnterEvent() {
 }
 
 addEnterEvent();
-setInterval(getChatMembers, 5000);
+getChatMembers();
 loadPage();
+setInterval(getChatMembers, 10000);
