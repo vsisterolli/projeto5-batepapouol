@@ -1,4 +1,4 @@
-let userName, contactName = "Todos", loading = false, visibility = "Publico";
+let userName, contactName = "Todos", loading = false, visibility = "Publico"
 
 function loadPage() {
     
@@ -189,12 +189,21 @@ function getChatMembers() {
 
 function revealNavbar() {
 
-    getChatMembers();
-    setInterval(getChatMembers, 5000);
-
     const navbar = document.querySelector('navbar');
     navbar.classList.remove('hidden');
 
+    const hideDiv = document.querySelector('#hide-chat');
+    hideDiv.classList.remove('hidden');
+
+}
+
+function hideNavbar() {
+
+    const navbar = document.querySelector('navbar');
+    navbar.classList.add('hidden');
+
+    const hideDiv = document.querySelector('#hide-chat');
+    hideDiv.classList.add('hidden');
 }
 
 function addEnterEvent() {
@@ -212,4 +221,5 @@ function addEnterEvent() {
 }
 
 addEnterEvent();
+setInterval(getChatMembers, 5000);
 loadPage();

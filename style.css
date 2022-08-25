@@ -14,7 +14,20 @@
     padding-top: 25px;
 }
 
+
 .page {
+    width: 100%;
+    position: relative;
+}
+
+#hide-chat {
+    background-color: black;
+    opacity:60%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    height: 100vh;
     width: 100%;
 }
 
