@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bate-Papo UOL</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="container initial-page">
+        <img src="images/logo 2.svg">
+        <input type="text" id="user-name" placeholder="Digite seu nome">
+        <button onclick="login();">Entrar</button>
+    </section>
+    <section class="container">
+        <navbar class="hidden">
+            <h2>Escolha um contato para enviar mensagem:</h2>
+            <section id="contacts"> 
+                <div class="container contact" onclick="selectParticipant(this)">
+                    <ion-icon name="people"></ion-icon></ion-icon>
+                    <h3>Todos</h3>
+                    <ion-icon class="selected checkmark" name="checkmark"></ion-icon>
+                </div>
+                <div class="container contact" onclick="selectParticipant(this)">
+                    <ion-icon name="md-contact"></ion-icon>
+                    <h3>Maria</h3>
+                    <ion-icon class="hidden checkmark" name="checkmark"></ion-icon>
+                </div>
+            </section>
+            <h2>Escolha a visibilidade</h2>
+            <div class="container mode" onclick="selectVisibility(this)">
+                <ion-icon name="ios-unlock"></ion-icon>
+                <h3>Publico</h3>
+                <ion-icon class="checkmark setted" name="checkmark"></ion-icon>
+            </div>
+            <div class="container mode" onclick="selectVisibility(this)">
+                <ion-icon name="ios-lock"></ion-icon>
+                <h3>Privado</h3>
+                <ion-icon class="checkmark hidden" name="checkmark"></ion-icon>
+            </div>
+        </navbar>
+        <main class="hidden page">
+            <header class="container header">
+                <img src="images/logo 1.svg">
+                <ion-icon name="people"></ion-icon>
+            </header>
+            <div class="chat">
+            </div>
+            <footer class="container footer">
+                <input id="message-type-box" type="text" placeholder="Escreva aqui...">
+                <img onclick="sendMessage()" eventsrc="images/Vector (2).svg">
+            </footer>
+        </main>
+    </section>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
