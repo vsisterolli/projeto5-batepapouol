@@ -7,6 +7,7 @@
     <title>Bate-Papo UOL</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
 </head>
 <body>
     <section class="container initial-page">
@@ -15,17 +16,17 @@
         <button onclick="login();">Entrar</button>
     </section>
     <section class="container">
-        <navbar class="hidden">
+        <navbar class="hidden slide-left">
             <h2>Escolha um contato para enviar mensagem:</h2>
             <section id="contacts"> 
             </section>
             <h2>Escolha a visibilidade</h2>
-            <div class="container mode" onclick="selectVisibility(this)">
+            <div class="container mode" data-identifier="visibility" onclick="selectVisibility(this)">
                 <ion-icon name="ios-unlock"></ion-icon>
                 <h3>Publico</h3>
                 <ion-icon class="checkmark setted" name="checkmark"></ion-icon>
             </div>
-            <div class="container mode" onclick="selectVisibility(this)">
+            <div class="container mode" data-identifier="visibility" onclick="selectVisibility(this)">
                 <ion-icon name="ios-lock"></ion-icon>
                 <h3>Reservadamente</h3>
                 <ion-icon class="checkmark hidden" name="checkmark"></ion-icon>
