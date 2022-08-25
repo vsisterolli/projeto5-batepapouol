@@ -156,7 +156,7 @@ function getChatMembers() {
     promise.then(response => {
         contactsList = document.querySelector('#contacts')
         contactsList.innerHTML = `  
-                            <div class="container contact" onclick="selectParticipant(this)">
+                            <div class="container contact" data-identifier="participant" onclick="selectParticipant(this)">
                                 <ion-icon name="people"></ion-icon></ion-icon>
                                 <h3>Todos</h3>
                                 <ion-icon class="selected checkmark" name="checkmark"></ion-icon>
@@ -174,7 +174,7 @@ function getChatMembers() {
         for(let i = 0; i < chatMembers.length; i++) {
             let contactHTML = (contactName === chatMembers[i].name ? 
                         `
-                            <div class="container contact" onclick="selectParticipant(this)">
+                            <div class="container contact" data-identifier="participant" onclick="selectParticipant(this)">
                                 <ion-icon name="md-contact"></ion-icon>
                                 <h3>${chatMembers[i].name}</h3>
                                 <ion-icon class="selected checkmark" name="checkmark"></ion-icon>
@@ -182,7 +182,7 @@ function getChatMembers() {
                         `
                         :
                         `
-                            <div class="container contact" onclick="selectParticipant(this)">
+                            <div class="container contact" data-identifier="participant" onclick="selectParticipant(this)">
                                 <ion-icon name="md-contact"></ion-icon>
                                 <h3>${chatMembers[i].name}</h3>
                                 <ion-icon class="hidden checkmark" name="checkmark"></ion-icon>

@@ -39,8 +39,8 @@
 navbar {
     
     position: fixed;
-    right: -100px;
-    top: 0px;
+    right: 0;
+    top: 0;
     z-index: 100;
 
     background-color: white;
