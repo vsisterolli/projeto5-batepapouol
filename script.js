@@ -1,4 +1,4 @@
-let userName, contactName = "Todos";
+let userName, contactName = "Todos", loading = false, visibility = "Publico";
 
 function loadPage() {
     
@@ -76,9 +76,9 @@ function sendMessage() {
     const message_form = document.querySelector('#message-type-box');
     const msg = {
         from: userName,     
-        to: "Todos",
+        to: contactName,
         text: message_form.value,
-        type: "message"
+        type: (visibility == "Publico" ? "message" : "private_message")
     }
     message_form.value = "";
     const aux = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", msg);
@@ -106,9 +106,13 @@ function login() {
 
 function selectParticipant(element) {
 
-    const previous = document.querySelector('.selected');
-    previous.classList.add('hidden');
-    previous.classList.remove('selected');
+    if(loading) return;
+
+    const previous = document.querySelectorAll('.selected');
+    for(let i = 0; i < previous.length; i++) {
+        previous[i].classList.add('hidden');
+        previous[i].classList.remove('selected');
+    }
     
 
     const checkmark = element.querySelector('.checkmark');
@@ -122,6 +126,7 @@ function selectParticipant(element) {
 
 function selectVisibility(element) {
 
+
     const previous = document.querySelector('.setted');
     previous.classList.add('hidden');
     previous.classList.remove('setted');
@@ -131,24 +136,39 @@ function selectVisibility(element) {
     checkmark.classList.remove('hidden');
     checkmark.classList.add('setted');
 
-    contactName = element.querySelector('h3').innerHTML;
-    console.log(contactName);
+    visibility = element.querySelector('h3').innerHTML;
 
 }
 
 function getChatMembers() {
     
     const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants');
+    loading = true;
+
     promise.then(response => {
         contactsList = document.querySelector('#contacts')
-        contactsList.innerHTML = "";
+        contactsList.innerHTML = `  
+                            <div class="container contact" onclick="selectParticipant(this)">
+                                <ion-icon name="people"></ion-icon></ion-icon>
+                                <h3>Todos</h3>
+                                <ion-icon class="selected checkmark" name="checkmark"></ion-icon>
+                            </div>
+                         `; // Todos já começa como padrão
+        
+        console.log(contactName);
+        if(contactName !== "Todos") {
+            const aux = document.querySelector('.selected');
+            aux.classList.remove('.selected');
+            aux.classList.add('hidden');
+        }
+
         let chatMembers = response.data;
         for(let i = 0; i < chatMembers.length; i++) {
-            let contactHTML = (partcipantName == chatMembers[i].name ? 
+            let contactHTML = (contactName === chatMembers[i].name ? 
                         `
                             <div class="container contact" onclick="selectParticipant(this)">
                                 <ion-icon name="md-contact"></ion-icon>
-                                <h3>${chatMembers[i].nome}</h3>
+                                <h3>${chatMembers[i].name}</h3>
                                 <ion-icon class="selected checkmark" name="checkmark"></ion-icon>
                             </div>
                         `
@@ -156,13 +176,24 @@ function getChatMembers() {
                         `
                             <div class="container contact" onclick="selectParticipant(this)">
                                 <ion-icon name="md-contact"></ion-icon>
-                                <h3>${chatMembers[i].nome}</h3>
+                                <h3>${chatMembers[i].name}</h3>
                                 <ion-icon class="hidden checkmark" name="checkmark"></ion-icon>
                             </div>
                         `)
             contactsList.innerHTML += contactHTML;
         }
+        loading = false;
     })
+
+}
+
+function revealNavbar() {
+
+    getChatMembers();
+    setInterval(getChatMembers, 5000);
+
+    const navbar = document.querySelector('navbar');
+    navbar.classList.remove('hidden');
 
 }
 

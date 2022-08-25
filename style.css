@@ -9,17 +9,44 @@
 }
 
 .chat {
-    width: 100% !important;
     margin-top: 80px;
     margin-bottom: 80px;
     padding-top: 25px;
 }
 
-
+.page {
+    width: 100%;
+}
 
 .contact, .mode {
     position: relative;
     align-items: center;
+}
+
+navbar {
+    
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 100;
+
+    background-color: white;
+    flex-direction: column;
+    
+    width: 259px;
+    height: 100vh;
+
+    padding: 25px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    text-align: center;
+
+    color: #000000;
 }
 
 navbar h3 {
@@ -56,7 +83,6 @@ navbar ion-icon {
 .message {
 
     margin: 4px 0px;
-    width: 100% !important;
 
     border-radius: 2px;
     height: 40px;
@@ -112,10 +138,6 @@ span {
     padding: 0px 23px;
 
 
-}
-
-.page {
-    width: 100%;
 }
 
 .footer {
