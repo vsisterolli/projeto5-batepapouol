@@ -22,7 +22,7 @@ function loadPage() {
                                     <span class="target">${messages[i].from}</span>
                                     <span>reservadamente para</span>
                                     <span class="target">${messages[i].to}:</span>
-                                    ${messages[i].text}</h1>
+                                    <span class="content">${messages[i].text}</span></h1>
                                     `
                     break;
                 
@@ -40,7 +40,7 @@ function loadPage() {
                             <span class="target">${messages[i].from}</span>
                             <span>para</span>
                             <span class="target">${messages[i].to}:</span>
-                            ${messages[i].text}</h1>
+                            <span class="content">${messages[i].text}</span></h1>
                             `
             
             }
@@ -48,7 +48,8 @@ function loadPage() {
             chat.innerHTML += message;
 
     }
-
+            const aux = document.querySelector('message');
+            aux[aux.length - 1].scrolllIntoView();
     })
 
 }
