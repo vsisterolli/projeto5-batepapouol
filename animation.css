@@ -12,22 +12,22 @@
  */
  @-webkit-keyframes slide-left {
     0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
+        right: -100px;
+        top: 0;
     }
     100% {
-      -webkit-transform: translateX(-100px);
-              transform: translateX(-100px);
+        right: 0;
+        top: 0;
     }
   }
   @keyframes slide-left {
     0% {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
+      right: -100px;
+      top: 0;
     }
     100% {
-      -webkit-transform: translateX(-100px);
-              transform: translateX(-100px);
+        right: 0;
+        top: 0;
     }
   }
   
