@@ -36,6 +36,30 @@
     align-items: center;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+navbar::-webkit-scrollbar {
+    width: 5px;
+    display: initial;
+  }
+  
+  /* Track */
+navbar::-webkit-scrollbar-track {
+    background: #777777;
+  }
+  
+  /* Handle */
+navbar::-webkit-scrollbar-thumb {
+    background: rgb(17, 17, 17);
+  }
+  
+  /* Handle on hover */
+navbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 navbar {
     
     position: fixed;
@@ -43,10 +67,12 @@ navbar {
     top: 0;
     z-index: 100;
 
+    overflow-y: scroll;
+
     background-color: white;
     flex-direction: column;
     
-    width: 259px;
+    width: 275px;
     height: 100vh !important;
 
     padding: 25px;
