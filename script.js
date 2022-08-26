@@ -48,8 +48,10 @@ function loadPage() {
             chat.innerHTML += message;
 
     }
-            const aux = document.querySelector('message');
-            aux[aux.length - 1].scrolllIntoView();
+            const aux = document.querySelectorAll('.message');
+            console.log(aux);
+            aux[aux.length - 1].scrollIntoView()
+
     })
 
 }
