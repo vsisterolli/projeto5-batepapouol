@@ -12,8 +12,14 @@
 <body>
     <section class="container initial-page">
         <img src="images/logo 2.svg">
-        <input type="text" id="user-name" placeholder="Digite seu nome">
-        <button onclick="login();">Entrar</button>
+        <div class="container login">
+            <input type="text" id="user-name" placeholder="Digite seu nome">
+            <button onclick="login();">Entrar</button>
+        </div>
+        <div class="hidden loading">
+            <img src="images/loading1.gif">
+            <h2>Loading...</h2>
+        </div>
     </section>
     <section class="container">
         <navbar class="hidden slide-left">

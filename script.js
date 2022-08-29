@@ -94,8 +94,16 @@ function sendMessage() {
 
 function confirmar(resultado) {
 
-    if(resultado.response.status == 400) 
+    if(resultado.response.status == 400) {
         alert("Esse nick já está sendo utilizado!");
+
+        const login = document.querySelector('.login');
+        login.classList.remove('hidden');
+    
+        const loading_animation = document.querySelector('.loading');
+        loading_animation.classList.add('hidden');
+
+    }
     else
         revealPage();
 } 
@@ -104,6 +112,12 @@ function login() {
     
     userName = document.querySelector('#user-name').value;
     const obj = {name: userName};
+
+    const login = document.querySelector('.login');
+    login.classList.add('hidden');
+
+    const loading_animation = document.querySelector('.loading');
+    loading_animation.classList.remove('hidden');
 
     let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", obj);
     promise.then(revealPage).catch(confirmar);

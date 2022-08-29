@@ -10,7 +10,7 @@
 
 .chat {
     margin-top: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     padding-top: 25px;
 }
 
@@ -86,6 +86,10 @@ navbar {
     text-align: center;
 
     color: #000000;
+}
+
+.loading img {
+    height: 100px;
 }
 
 navbar h3 {
@@ -206,6 +210,26 @@ span {
 
 .initial-page {
     background-color: white;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.loading {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Roboto';
+    margin-top: -100px;
+}
+
+.loading h2 {
+    margin: 0 auto; 
+}
+
+.login {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
